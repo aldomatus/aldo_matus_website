@@ -1,7 +1,8 @@
 import os
 import secrets
-from typing import Any, List, Optional, Union, Tuple, Dict
-from pydantic import AnyHttpUrl, BaseSettings, EmailStr, PostgresDsn, validator, HttpUrl
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, PostgresDsn, validator
 from pydantic.env_settings import SettingsSourceCallable
 
 env_path = os.path.join(os.getcwd(), ".env")
@@ -12,14 +13,14 @@ class Settings(BaseSettings):
     class Config:
         case_sensitive = False
         env_file = env_path
-        env_file_encoding = 'utf-8'
+        env_file_encoding = "utf-8"
 
         @classmethod
         def customise_sources(
-                cls,
-                env_settings: SettingsSourceCallable,
-                init_settings: SettingsSourceCallable,
-                file_secret_settings: SettingsSourceCallable,
+            cls,
+            env_settings: SettingsSourceCallable,
+            init_settings: SettingsSourceCallable,
+            file_secret_settings: SettingsSourceCallable,
         ) -> Tuple[SettingsSourceCallable, ...]:
             return init_settings, env_settings, file_secret_settings
 

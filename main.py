@@ -1,9 +1,11 @@
 import os
 from functools import lru_cache
+
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from app.core.config import Settings
+
 from app.api.api_v1.api import api_router
+from app.core.config import Settings
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -12,13 +14,8 @@ app = FastAPI(
     title=settings.PROJECT_NAME,
     description="Aldo Matus Website",
     version="0.0.1",
-    openapi_tags=[
-        {
-            "name": "user",
-            "description": "users routes"
-        }
-    ],
-    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    openapi_tags=[{"name": "user", "description": "users routes"}],
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
 )
 
 
@@ -30,6 +27,6 @@ def get_settings():
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
-@app.get('/', response_class=RedirectResponse, include_in_schema=False)
+@app.get("/", response_class=RedirectResponse, include_in_schema=False)
 async def docs():
-    return RedirectResponse(url='/docs')
+    return RedirectResponse(url="/docs")

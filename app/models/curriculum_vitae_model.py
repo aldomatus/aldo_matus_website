@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Date, Boolean, ForeignKey
+from sqlalchemy import Column, Date, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import relationship
 
 from app.db.base_class import Base
@@ -38,7 +38,7 @@ class Education(Base):
     degree = Column(String(100), nullable=False)
     start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=True)
-    cv_id = Column(Integer, ForeignKey('curriculum_vitae.id'))
+    cv_id = Column(Integer, ForeignKey("curriculum_vitae.id"))
 
     cv = relationship("CurriculumVitae", back_populates="education")
 
@@ -51,7 +51,7 @@ class WorkExperience(Base):
     position = Column(String(100), nullable=False)
     start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=True)
-    cv_id = Column(Integer, ForeignKey('curriculum_vitae.id'))
+    cv_id = Column(Integer, ForeignKey("curriculum_vitae.id"))
 
     cv = relationship("CurriculumVitae", back_populates="work_experience")
 
@@ -62,6 +62,6 @@ class Project(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(100), nullable=False)
     description = Column(Text, nullable=True)
-    cv_id = Column(Integer, ForeignKey('curriculum_vitae.id'))
+    cv_id = Column(Integer, ForeignKey("curriculum_vitae.id"))
 
     cv = relationship("CurriculumVitae", back_populates="projects")
