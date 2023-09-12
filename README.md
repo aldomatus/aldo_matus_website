@@ -7,7 +7,7 @@ Hello, I'm Aldo, a Software Engineer specializing in **Python development**. I h
 ## :toolbox: Skills
 
 - **Python**: My primary programming language for developing scalable and robust applications.
-  
+
 - **Docker**: Expertise in containerizing applications for consistent development and deployment.
 
 - **AWS Services**: Proficient in leveraging various AWS services for cloud-based solutions.
@@ -23,6 +23,3 @@ Here you'll find a variety of projects that I've worked on, demonstrating my ski
 ## :email: Contact
 
 Feel free to reach out if you're interested in collaborating or have any questions.
-
-
-

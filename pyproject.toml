@@ -1,0 +1,32 @@
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+skip_glob = ["docs/*", ".venv/*", ".git/*", "zuno_auth/*"]
+
+[tool.bandit]
+exclude_dirs = ["**/.venv/**", "**/tests/**"]
+exclude = [
+    "**/tests/**",
+    "**/*test.py",
+]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
+
+[tool.pre-commit-hooks.bandit]
+exclude = ["*test"]
